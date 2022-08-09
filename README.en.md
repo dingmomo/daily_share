@@ -1,8 +1,10 @@
 # 每日一享
 
 #### Description
-每日一分享,分享开发中遇到的问题做过的模块
-
+每日一分享,分享开发中遇到的问题跟做过的模块
+添加文件注意目录的结构没有目录的可以自己创建
+人人为我,我为人人
+让我们可以腾出更多的时间去放松
 #### Software Architecture
 Software architecture description
 
