@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  var obj = {aey1:1,vey2:2,key3:3,sey4:4};
+(function(value){
+  let datas = {}
+for (const key in obj) {
+  datas[key.replace(key[0],key[0].toUpperCase())]=obj[key]
+}
+console.log(datas);
+})()
+
+</script>
+</html>

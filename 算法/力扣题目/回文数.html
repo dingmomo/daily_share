@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  let arr = 121
+  var isPalindrome = function(x) {
+    if(x==0) return false;
+    arr = x.toString().split("")
+    let i = parseInt (arr.length/2) //数组折半双指针遍历对比
+    for (let indearr = 0; indearr < i; indearr++) {
+      if(arr[indearr]!==arr[arr.length-1-indearr]){
+        return false;
+      }
+    }
+    return true
+};
+console.log(isPalindrome(arr));
+  
+</script>
+</html>

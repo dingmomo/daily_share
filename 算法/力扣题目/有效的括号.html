@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  var isValid = function(s) {
+    if(s.length%2!==0) return false; //判断是否偶数
+    const Arr = [] //创建存储变量
+    const obj = {  //创建括号
+        '(': ')',
+        '{':'}',
+        '[':']'
+    }
+    for (let i = 0;i < s.length;i ++) {
+        const item = s[i] //拿到当前的括号
+        if (obj[item]) { //如果是左括弧添加右括弧到数组第0项 （后入先出）
+            Arr.unshift(obj[item])
+        } else { //如果没匹配到肯定是出现了右括号
+            if (Arr[0] === item) { //判断数组上一次添加的是否是该类型左括号
+                Arr.shift() //如果是那就拿掉该项
+            } else { //如果不等于那么不是有效的自闭合括号
+                return false
+            }
+        }
+    }
+    return Arr.length===0 //判断是否还有没有拿取完成的括号
+};
+console.log(isValid("{[]}"));
+</script>
+</html>

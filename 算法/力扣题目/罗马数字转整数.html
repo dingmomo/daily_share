@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  var romanToInt = function(s) {
+    let arr = {
+      'I':1,
+      'V':5,
+      'X':10,
+      'L':50,
+      'C':100,
+      'D':500,
+      'M':1000,
+    }
+    let numbers = 0
+    let stars =false
+    for (let index = 0; index < s.length; index++) {
+      if(arr[s[index+1]]>arr[s[index]]&&stars!==true){ //判断后面一位是否大于前面一位如果大于就相相减 并且下一位不参与后面的运算
+        numbers+= arr[s[index+1]]-arr[s[index]]
+       stars=true
+      } else if(stars===true){
+        stars=false
+      }
+      else{
+        numbers+=arr[s[index]]
+      }
+    }
+    return numbers
+};
+console.log(romanToInt("MCMXCIV"));
+</script>
+</html>

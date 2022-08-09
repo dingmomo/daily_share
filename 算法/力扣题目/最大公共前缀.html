@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  var longestCommonPrefix = function(strs) {
+    if(strs.length<=1) return strs[0];
+    // 解决出现单个数组的情况
+    function getLengthOfLongestElement(arr) { //取出数组最大长度元素
+  return Math.max(0,...arr.map(s=>s.length));
+}
+  let max ='' //最大共长缀
+  let  cache = '' //临时缓存数据
+  
+var output = getLengthOfLongestElement(strs);
+    for (let index = 0; index < output; index++) { //通过最大元素双层遍历数组
+      for (let i = 0; i < strs.length; i++) {
+        if(strs[i][index]!==undefined&&i==0){ //判断是否有元素且是否是第一个是在一个就把值放入缓存变量 ，下一次遍历开始是把值赋值到最大公前缀
+          cache?max+=cache:''
+          cache = strs[i][index]
+        }else if(strs[i][index]!==cache&&i!==0){ //如果有后面的数组不符合的终止遍历返回结构
+          return max
+        }else if(strs[i][index]===undefined&&i===0){ //如果第一个数组长度较短那么会丢失上一轮循环保留的内容，在这里终止循环把数据赋值到最大共前缀
+          cache?max+=cache:''
+          return max
+        }
+    }
+    index===output-1?max+=cache:''; //判断是否最后一次遍历解决数据丢失问题 ：因为第一次的数据是在等二次遍历开始时把缓存的数据加到共前缀前
+    }
+    return max
+  };
+  console.log(longestCommonPrefix(["a","ac"]));
+</script>
+</html>

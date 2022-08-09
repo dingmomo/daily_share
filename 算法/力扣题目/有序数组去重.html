@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+var removeDuplicates = function(nums) {
+    let i=1,j=1;
+    while(j<nums.length){
+        debugger
+        while(j<nums.length && nums[j-1]===nums[j]) j++;
+        if(j<nums.length) nums[i++]=nums[j++];
+    }
+    return i;
+};
+console.log(removeDuplicates([1,1,2]));
+</script>
+</html>
