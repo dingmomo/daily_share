@@ -13,12 +13,22 @@
 <script>
 console.time('aa');
   let arr =[
+        { ownerNo: "a", customerCode: "4" },
         { ownerNo: "a", customerCode: "2" },
-        { ownerNo: "3", customerCode: "2" },
         { ownerNo: "a", customerCode: "2" },
         { ownerNo: "a", customerCode: "4" },
-        { ownerNo: "3", customerCode: "2" },
+        { ownerNo: "a", customerCode: "2" },
   ]
+  
+function Move(arr, a, b) {
+ 
+ let arr_temp = [].concat(arr);
+
+ arr_temp.splice(b, 0, arr_temp.splice(a, 1)[0]);
+
+ return arr_temp;
+
+}
   let data = []
   let keysArr = []
   let keys = Object.keys(arr[0]) //获取公共key值
@@ -33,14 +43,26 @@ console.time('aa');
       }
     })
   })
-  keys.forEach(v=>{
+  keys.forEach((v,keyindex)=>{
     let vkes = Object.keys(obj[v]) //获取排序key值
     vkes.forEach(value=>{
       obj[v][value].forEach(vau=>{
       if(keysArr.indexOf(vau)===-1){ //判断是否已被纳入排序
       data.push(arr[vau])
       keysArr.push(vau) //添加完成，标记索引
-      }else return
+      }else {
+        let index =keysArr.indexOf(vau)
+        if(index===0) return
+        let i = data.findIndex(datas=>{
+          console.log(datas[v],arr[vau][v],'--------',datas[keys[keyindex-1]],arr[vau][keys[keyindex-1]]);
+
+          return datas[v]===arr[vau][v] && datas[keys[keyindex-1]]===arr[vau][keys[keyindex-1]]
+        })
+        console.log(i);
+        if(i!==-1){
+        data = Move(data,index,i)
+        }
+      }
       })
     })
   })
