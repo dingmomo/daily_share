@@ -23,11 +23,11 @@ function fileDisplay(filePath) {
                         if (isFile) {
                             const filenam_css =filename.replace('-',' ').replace(',',' ').replace('[',' ').replace(']',' ');//获取替换之后的文件夹
                             const name_css =filenam_css.substring(0, filenam_css.lastIndexOf("."));//获取字体名
-                            const suffix = filenam_css.substring(filenam_css.lastIndexOf(".")+1);//获取文件类型
+                            // const suffix = filenam_css.substring(filenam_css.lastIndexOf(".")+1);//获取文件类型
                             let file_value =`
                             @font-face {
                                 font-family:${name_css};
-                                src: url('./fonts/${filename}') format('${suffix}')
+                                src: url('./fonts/${filename}') 
                             }
                             `
                             fs.appendFileSync(file,file_value) //同步追加写入
