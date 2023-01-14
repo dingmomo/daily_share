@@ -54,11 +54,8 @@ function Move(arr, a, b) {
         let index =keysArr.indexOf(vau)
         if(index===0) return
         let i = data.findIndex(datas=>{
-          console.log(datas[v],arr[vau][v],'--------',datas[keys[keyindex-1]],arr[vau][keys[keyindex-1]]);
-
           return datas[v]===arr[vau][v] && datas[keys[keyindex-1]]===arr[vau][keys[keyindex-1]]
         })
-        console.log(i);
         if(i!==-1){
         data = Move(data,index,i)
         }
