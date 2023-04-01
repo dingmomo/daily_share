@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  // var maskPII = function (s) {
+  //     let str = ''
+  //     s=s.toLowerCase()
+  //     if (s.includes('@')) { //邮箱处理
+  //       str = s[0] + '*****' + s[s.indexOf('@') - 1] + s.substr(s.indexOf('@'))
+  //     } else { //电话号码处理
+  //        const pattern = /[+\-() ]/g; // 使用replace()方法替换符号为空字符串
+  //       let strDats = s.replace(pattern, '');
+  //       let len = strDats.length
+  //       if (len === 10) { //本地号码
+  //         str = '***-***-'+ strDats.substr(strDats.length-4)
+  //       } else { //国家号码
+  //         let index = strDats.length-10
+  //         let values= '+'
+  //         for (let i = 0; i < index; i++) {
+  //           values += '*'
+  //         }
+  //         str = values+ '-***-***-' + strDats.substr(strDats.length - 4)
+  //       }
+  //     }
+  //     return str
+  //   };
+  const maskPII = function (s) { //优化版
+      s = s.toLowerCase();
+      if (s.includes('@')) { //邮箱处理
+        const [name, domain] = s.split('@');
+        return `${name[0]}*****${name[name.length - 1]}@${domain}`;
+      } else { //电话号码处理
+        const digits = s.replace(/[+\-() ]/g, '');
+        const len = digits.length;
+        if (len === 10) { //本地号码
+          return `***-***-${digits.slice(-4)}`;
+        } else { //国家号码
+          return `+${'*'.repeat(len - 10)}-***-***-${digits.slice(-4)}`;
+        }
+      }
+    };
+    console.log(maskPII("LeetCode@LeetCode.com"));
+</script>
+</html>
