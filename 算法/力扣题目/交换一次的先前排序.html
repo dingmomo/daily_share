@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  /**
+   * @param {number[]} arr
+   * @return {number[]}
+   */
+  var prevPermOpt1 = function (dataArr) { //贪心算法 时间复杂度为O(n^2)
+    let len = dataArr.length;
+    for (let i = len - 2; i >= 0; i--) {
+      let maxId = -1, maxi = -1;
+      // 找到所有小于dataArr[i]的值中的最大值即可满足交换条件
+      for (let j = i + 1; j < len; j++) {
+        if (dataArr[i] > dataArr[j]) {
+          if (maxi < dataArr[j]) {
+            maxId = j;
+            maxi = dataArr[j];
+          }
+        }
+      }
+      if (maxId === -1) continue;
+      [dataArr[i], dataArr[maxId]] = [dataArr[maxId], dataArr[i]];
+      break;
+    }
+    return dataArr;
+  };
+
+</script>
+
+</html>
