@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  var longestDecomposition = function (text) {
+    if (!text) return 0
+    let len = text.length
+    let i = 0;
+    let pre = ''  //定义前缀
+    let suf = '' //定义后缀
+    for (let index = 0; index != len; index++) {
+      pre += text[index]; //前指针取值
+      suf = text[(len) - (index + 1)] + suf; //后指针取值
+      if (pre == suf) { //匹配成功计数器加1清空前后缀
+        i++;
+        pre = '';
+        suf = ''
+      }
+    }
+    return i == 0 ? 1 : i
+  };
+  console.log(longestDecomposition('ghiabcdefhelloadamhelloabcdefghi'))
+</script>
+
+</html>
