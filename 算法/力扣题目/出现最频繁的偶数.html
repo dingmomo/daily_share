@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  var mostFrequentEven = function (nums) {
+    // 统计每个偶数出现的次数
+    const obj = {};
+    for (const num of nums) {
+      if (num % 2 === 0) {
+        if (typeof obj[num] === 'undefined') {
+          obj[num] = 1;
+        } else {
+          obj[num]++;
+        }
+      }
+    }
+
+    // 找出出现次数最多的偶数
+    let maxKeys = [];
+    let max = 0;
+    for (const [key, value] of Object.entries(obj)) {
+      if (value > max) {
+        maxKeys = [key];
+        max = value;
+      } else if (value === max) {
+        maxKeys.push(key);
+      }
+    }
+
+    // 返回最小的出现次数最多的偶数
+    return maxKeys.length > 0 ? Math.min(...maxKeys) : -1;
+  };
+    console.log(mostFrequentEven([0, 1, 2, 0, 0, 0, 2, 4, 4, 1]));
+</script>
+</html>
